@@ -17,7 +17,7 @@ MODELS=(
   "gemma3:12b-it-qat"
   "gemma3:4b-it-qat"
   "qwen2.5:7b"
-  "llama4:scout-17b-16e-instruct-q4_K_M"
+  "qwen2.5:14b-instruct-q4_K_M"
   "mistral:7b-instruct-q4_K_M"
   "phi4:14b-q4_K_M"
 )
