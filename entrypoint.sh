@@ -14,12 +14,12 @@ set -euo pipefail
 #   phi4:14b-q4_K_M       ~9  GB  — Razonamiento, matemáticas
 # Total worst-case (todos en disco): ~40 GB — solo 1 en RAM a la vez
 MODELS=(
-  "gemma3:12b-it-qat"
-  "gemma3:4b-it-qat"
-  "qwen2.5:7b"
-  "qwen2.5:14b-instruct-q4_K_M"
-  "mistral:7b-instruct-q4_K_M"
-  "phi4:14b-q4_K_M"
+  "qwen2.5 :3b"
+  "qwen2.5:3b"
+  "llama3.2:3b"
+  "qwen2.5-coder:1.5b"
+  "phi3:3.8b"
+  "gemma3:4b"
 )
 
 # ── Start Ollama server ───────────────────────────────────────
