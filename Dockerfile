@@ -17,11 +17,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # ── Install Ollama ───────────────────────────────────────────
 RUN curl -fsSL https://ollama.com/install.sh | sh
 
-# ── Model storage volume hint ────────────────────────────────
-# Mount a Railway Volume at /models to persist downloaded models
-# across deploys and avoid re-downloading on every restart.
-VOLUME ["/models"]
-
 # ── Entrypoint script ────────────────────────────────────────
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
