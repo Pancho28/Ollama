@@ -1,0 +1,18 @@
+# ============================================================
+# railway.toml — Railway deployment configuration
+# ============================================================
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "/entrypoint.sh"
+healthcheckPath = "/api/tags"
+healthcheckTimeout = 300        # models can take time to pull on first boot
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+# Expose Ollama API
+[[services]]
+port = 11434
+protocol = "tcp"

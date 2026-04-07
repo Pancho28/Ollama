@@ -1,0 +1,38 @@
+# ============================================================
+# docker-compose.yml — Local development / testing
+# Mirrors the Railway environment as closely as possible
+# ============================================================
+version: "3.9"
+
+services:
+  ollama:
+    build: .
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      # Persist models between local restarts
+      - ollama_models:/models
+    environment:
+      OLLAMA_HOST: "0.0.0.0:11434"
+      OLLAMA_MODELS: "/models"
+      OLLAMA_KEEP_ALIVE: "5m"
+      OLLAMA_NUM_PARALLEL: "4"
+      OLLAMA_MAX_LOADED_MODELS: "1"
+    # Simulate Railway resource limits locally
+    deploy:
+      resources:
+        limits:
+          cpus: "8"
+          memory: "16g"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:11434/api/tags"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  ollama_models:
+    driver: local
